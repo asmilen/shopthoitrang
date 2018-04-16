@@ -13,10 +13,10 @@
             <a href="{{ url('/quantri') }}">Dashboard</a>
         </li>
         <li>
-            <a href="{{ route('admin.users.index') }}">Users</a>
+            <a href="{{ route('admin.roles.index') }}">Roles</a>
         </li>
         <li>
-            <a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</a>
+            <a href="{{ route('admin.roles.show', $role->id) }}">{{ $role->name }}</a>
         </li>
         <li class="active">Permissions</li>
     </ul><!-- /.breadcrumb -->
@@ -27,16 +27,16 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            User Permissions
+            Role Permissions
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                {{ $user->name }}
+                {{ $role->name }}
             </small>
         </h1>
     </div><!-- /.page-header -->
     <div class="row">
         <div class="col-xs-12">
-            <form role="form" method="POST" action="{{ route('admin.userPermissions.update', $user->id) }}">
+            <form role="form" method="POST" action="{{ route('admin.rolePermissions.update', $role->id) }}">
                 {!! csrf_field() !!}
                 {!! method_field('PUT') !!}
                 <table class="table table-striped table-bordered table-hover">
@@ -44,9 +44,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Has Access</th>
-                            <th><i class="ace-icon fa bigger-125 fa-level-down purple"></i> Inherit</th>
-                            <th><i class="ace-icon fa bigger-125 fa-times red"></i> Reject</th>
-                            <th><i class="ace-icon fa bigger-125 fa-check green"></i> Grant</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,27 +51,8 @@
                         <tr>
                             <td>{{ $permission['name'] }}</td>
                             <td>
-                                @if ($user->hasAccess($permission['name']))
-                                <i class="ace-icon fa bigger-125 fa-check green"></i>
-                                @else
-                                <i class="ace-icon fa bigger-125 fa-times red"></i>
-                                @endif
-                            </td>
-                            <td>
                                 <label>
-                                    <input name="permissions[{{ $permission['name'] }}]" type="radio" class="ace" value="-1" />
-                                    <span class="lbl"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label>
-                                    <input name="permissions[{{ $permission['name'] }}]" type="radio" class="ace" value="0" />
-                                    <span class="lbl"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <label>
-                                    <input name="permissions[{{ $permission['name'] }}]" type="radio" class="ace" value="1" />
+                                    <input class="ace ace-switch ace-switch-6"{{ $role->hasAccess($permission['name']) ? ' checked="checked"' : '' }} name="permissions[{{ $permission['name'] }}]" type="checkbox" value="1">
                                     <span class="lbl"></span>
                                 </label>
                             </td>

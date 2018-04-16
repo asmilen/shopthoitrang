@@ -179,6 +179,7 @@ class User extends EloquentUser implements
 
     public function grantPermissions($permissions)
     {
+        dd($permissions);
         foreach ($permissions as $permission => $value) {
             $this->grantPermission($permission, $value);
         }

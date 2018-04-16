@@ -10,7 +10,7 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            <a href="{{ url('/quantri') }}">Dashboard</a>
         </li>
         <li>
             <a href="{{ route('admin.users.index') }}">Users</a>

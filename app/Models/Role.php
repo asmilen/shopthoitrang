@@ -26,8 +26,8 @@ class Role extends EloquentRole
                 'id', 'slug', 'name', 'permissions'
             ]);
 
-        return Datatables::eloquent($model)
-            ->addColumn('action', 'roles.datatables.action')
+        return datatables()->eloquent($model)
+            ->addColumn('action', 'admin.roles.datatables.action')
             ->make(true);
     }
 

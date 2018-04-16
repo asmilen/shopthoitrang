@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('styles')
-    <link rel="stylesheet" href="/vendor/ace/assets/css/chosen.css" />
-@endsection
-
 @section('content')
 <!-- #section:basics/content.breadcrumbs -->
 <div class="breadcrumbs" id="breadcrumbs">
@@ -14,12 +10,12 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            <a href="{{ url('/quantri') }}">Dashboard</a>
         </li>
         <li>
-            <a href="{{ route('admin.users.index') }}">Users</a>
+            <a href="{{ route('admin.roles.index') }}">Roles</a>
         </li>
-        <li class="active">Create</li>
+        <li class="active">Edit</li>
     </ul><!-- /.breadcrumb -->
     <!-- /section:basics/content.searchbox -->
 </div>
@@ -28,12 +24,12 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            Users
+            Roles
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                Create
+                Edit
             </small>
-            <a class="btn btn-primary pull-right" href="{{ route('admin.users.index') }}">
+            <a class="btn btn-primary pull-right" href="{{ route('admin.roles.index') }}">
                 <i class="ace-icon fa fa-list" aria-hidden="true"></i>
                 <span class="hidden-xs">List</span>
             </a>
@@ -43,32 +39,12 @@
         <div class="col-xs-12">
             @include('common.errors')
             
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.users.store') }}">
-                @include('users._form')
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.roles.update', $role->id) }}">
+                {!! method_field('PUT') !!}
+
+                @include('admin.roles._form')
             </form>
         </div>
     </div>
 </div><!-- /.page-content -->
-@endsection
-
-@section('scripts')
-<script src="/vendor/ace/assets/js/chosen.jquery.js"></script>
-<script src="/js/jquery.chained.min.js"></script>
-@endsection
-
-@section('inline_scripts')
-<script>
-$(function () {
-    $("#area").chained("#level");
-
-    $(".chosen-select").chosen({
-        allow_single_deselect: true,
-        width: '100%'
-    });
-
-    $('#level').on('change', function(){
-        $('#area').trigger('chosen:updated');
-    });
-});
-</script>
 @endsection

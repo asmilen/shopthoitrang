@@ -32,12 +32,12 @@ Route::group(['middleware' => 'admin', 'prefix' => 'quantri', 'as' => 'admin.', 
         Route::put('users/{user}/permissions', 'UserPermissionsController@update')->name('userPermissions.update');
 
         // Roles
-        Route::get('roles/datatables', 'Admin\RolesController@getDatatables')->name('roles.datatables');
-        Route::resource('roles', 'Admin\RolesController');
-        Route::get('roles/{role}/permissions', 'Admin\RolePermissionsController@index')->name('rolePermissions.index');
-        Route::put('roles/{role}/permissions', 'Admin\RolePermissionsController@update')->name('rolePermissions.update');
+        Route::get('roles/datatables', 'RolesController@getDatatables')->name('roles.datatables');
+        Route::resource('roles', 'RolesController');
+        Route::get('roles/{role}/permissions', 'RolePermissionsController@index')->name('rolePermissions.index');
+        Route::put('roles/{role}/permissions', 'RolePermissionsController@update')->name('rolePermissions.update');
 
         // Permissions
-        Route::resource('permissions', 'Admin\PermissionsController', ['only' => ['index']]);
+        Route::resource('permissions', 'PermissionsController', ['only' => ['index']]);
     });
 });
