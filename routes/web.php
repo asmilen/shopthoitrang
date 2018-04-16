@@ -18,13 +18,26 @@ Route::get('/', function () {
 Auth::routes();
 #Admin Routes
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/admin', 'Admin\DashboardController@index');
+Route::get('auth/google', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallback');
 
-    Route::get('auth/google', 'Auth\AuthController@redirectToProvider');
-    Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallback');
+Route::group(['middleware' => 'admin', 'prefix' => 'quantri', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'DashboardController@index');
 
     Route::group(['middleware' => 'acl'],function() {
+        // Users
+        Route::get('users/datatables', 'UsersController@getDatatables')->name('users.datatables');
+        Route::resource('users', 'UsersController');
+        Route::get('users/{user}/permissions', 'UserPermissionsController@index')->name('userPermissions.index');
+        Route::put('users/{user}/permissions', 'UserPermissionsController@update')->name('userPermissions.update');
 
+        // Roles
+        Route::get('roles/datatables', 'Admin\RolesController@getDatatables')->name('roles.datatables');
+        Route::resource('roles', 'Admin\RolesController');
+        Route::get('roles/{role}/permissions', 'Admin\RolePermissionsController@index')->name('rolePermissions.index');
+        Route::put('roles/{role}/permissions', 'Admin\RolePermissionsController@update')->name('rolePermissions.update');
+
+        // Permissions
+        Route::resource('permissions', 'Admin\PermissionsController', ['only' => ['index']]);
     });
 });

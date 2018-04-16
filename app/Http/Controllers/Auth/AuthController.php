@@ -38,6 +38,6 @@ class AuthController extends Controller
 
         Sentinel::login($user);
 
-        return redirect('/admin');
+        return redirect('/quantri');
     }
 }

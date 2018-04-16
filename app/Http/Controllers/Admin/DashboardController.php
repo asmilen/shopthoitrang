@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sentinel;
 
-class DashboardController extends AdminController
+class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     //
     public function index()
     {
-        return Sentinel::getUser();
+        return view('dashboard');
     }
 }

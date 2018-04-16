@@ -26,7 +26,7 @@ class User extends EloquentUser implements
         Notifiable;
 
     protected $fillable = [
-        'name',
+        'last_name',
         'email',
         'password',
         'permissions',
@@ -71,15 +71,15 @@ class User extends EloquentUser implements
     public static function getDatatables()
     {
         $model = static::select([
-            'id', 'name', 'email', 'last_login'
+            'id', 'last_name', 'email', 'last_login'
         ])
             ->with('roles', 'activations');
 
-        return Datatables::eloquent($model)
+        return datatables()->eloquent($model)
             ->filter(function ($query) {
                 if (request()->has('name')) {
                     $query->where(function ($query) {
-                        $query->where('name', 'like', '%'.request('name').'%');
+                        $query->where('last_name', 'like', '%'.request('name').'%');
                     });
                 }
 
@@ -92,8 +92,8 @@ class User extends EloquentUser implements
                     return $role->name;
                 })->toArray());
             })
-            ->addColumn('status', 'users.datatables.status')
-            ->addColumn('action', 'users.datatables.action')
+            ->addColumn('status', 'admin.users.datatables.status')
+            ->addColumn('action', 'admin.users.datatables.action')
             ->rawColumns(['status', 'action'])
             ->make(true);
     }
