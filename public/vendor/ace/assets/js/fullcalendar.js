@@ -8070,7 +8070,7 @@ function View(calendar) {
 		var day0 = t.start.day(); // first date's day of week
 		cellOffset += dayToCellMap[day0]; // normlize cellOffset to beginning-of-week
 		return Math.floor(cellOffset / cellsPerWeek) * 7 + // # of days from full weeks
-			cellToDayMap[ // # of days from partial last week
+			cellToDayMap[ // # of days from partials last week
 				(cellOffset % cellsPerWeek + cellsPerWeek) % cellsPerWeek // crazy math to handle negative cellOffsets
 			] -
 			day0; // adjustment for beginning-of-week normalization
@@ -8104,7 +8104,7 @@ function View(calendar) {
 		var day0 = t.start.day(); // first date's day of week
 		dayOffset += day0; // normalize dayOffset to beginning-of-week
 		return Math.floor(dayOffset / 7) * cellsPerWeek + // # of cells from full weeks
-			dayToCellMap[ // # of cells from partial last week
+			dayToCellMap[ // # of cells from partials last week
 				(dayOffset % 7 + 7) % 7 // crazy math to handle negative dayOffsets
 			] -
 			dayToCellMap[day0]; // adjustment for beginning-of-week normalization

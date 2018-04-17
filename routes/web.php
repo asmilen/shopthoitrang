@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcometo');
+#Auth routes
+Auth::routes();
+
+#Frontend Routes
+Route::group(['as' => 'frontend.', 'namespace' => 'FrontEnd'], function () {
+    Route::get('/', 'HomeController@index');
 });
 
-Auth::routes();
 #Admin Routes
-
 Route::get('auth/google', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallback');
 
