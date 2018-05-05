@@ -28,7 +28,7 @@
 <![endif]-->
 
 <!-- Styles -->
-<link href="/css/app.css" rel="stylesheet">
+<link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
 @yield('inline_styles')
 
@@ -52,3 +52,5 @@
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='/vendor/ace/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 </script>
+
+<script src="/js/angular.min.js"></script>

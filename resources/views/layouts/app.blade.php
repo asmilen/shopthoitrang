@@ -3,8 +3,8 @@
 <head>
     @include('partials.head')
 </head>
-<body class="no-skin">
-    <div >
+<body class="no-skin" ng-app="app" ng-cloak>
+    <div id="app" ng-controller="AppController">
         @include('partials.header')
 
         <div id="main-container" class="main-container">

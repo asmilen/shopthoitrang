@@ -11,4 +11,7 @@
 <script src="/vendor/ace/assets/js/select2.js"></script>
 <script src="/js/lity.min.js"></script>
 
+<script src="{{ mix('/js/app.js') }}"></script>
+
+
 @yield('inline_scripts')

@@ -35,10 +35,6 @@ class User extends EloquentUser implements
     public static function boot()
     {
         parent::boot();
-
-        static::creating(function ($user) {
-            $user->setApiToken();
-        });
     }
 
     public function getAvatarAttribute()

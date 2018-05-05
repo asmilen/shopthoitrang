@@ -43,6 +43,40 @@
         <li class="{{ (Request::is('quantri') || Request::is('quantri/*')) ? 'active' : '' }}">
             <a href="{{ url('/quantri') }}"><i class="menu-icon fa fa-tachometer"></i> <span class="menu-text"> Dashboard </span></a>
         </li>
+
+
+    @if ($currentUser->hasAccess('admin.categories.index') || $currentUser->hasAccess('admin.attributes.index'))
+        <li class="{{ (Request::is('quantri/categories') || Request::is('quantri/categories/*') || Request::is('quantri/attributes') || Request::is('quantri/attributes/*') || Request::is('quantri/manufacturers') || Request::is('quantri/manufacturers/*')) ? 'active open' : '' }}">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"> Quản lý danh mục </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu nav-show" style="display: none;">
+                @if ($currentUser->hasAccess('admin.categories.index'))
+                    <li class="{{ (Request::is('quantri/categories') || Request::is('quantri/categories/*')) ? 'active' : '' }}">
+                        <a href="{{ url('/quantri/categories') }}"><i class="menu-icon fa fa-folder"></i> <span class="menu-text"> Danh mục </span></a>
+                    </li>
+                @endif
+
+                @if ($currentUser->hasAccess('admin.attributes.index'))
+                    <li class="{{ (Request::is('quantri/attributes') || Request::is('quantri/attributes/*')) ? 'active' : '' }}">
+                        <a href="{{ url('/quantri/attributes') }}"><i class="menu-icon fa fa-list-alt"></i> <span class="menu-text"> Thuộc tính </span></a>
+                    </li>
+                @endif
+
+                @if ($currentUser->hasAccess('admin.manufacturers.index'))
+                    <li class="{{ (Request::is('quantri/manufacturers') || Request::is('quantri/manufacturers/*')) ? 'active' : '' }}">
+                        <a href="{{ url('quantri/manufacturers') }}"><i class="menu-icon fa fa-cube"></i> <span class="menu-text"> Nhà SX </span></a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+    @endif
     </ul><!-- /.nav-list -->
 
     <!-- #section:basics/sidebar.layout.minimize -->

@@ -21,7 +21,7 @@
                             </div>
                             <div class="infobox-data">
                                 <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
+                                <div class="infobox-content"><a href="{{ url('/quantri/categories') }}">danh mục</a> </div>
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                             </div>
                             <div class="infobox-data">
                                 <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
+                                <div class="infobox-content"><a href="{{ url('/quantri/manufacturers') }}">thương hiệu</a> </div>
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                             </div>
                             <div class="infobox-data">
                                 <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
+                                <div class="infobox-content"><a href="{{ url('/quantri/attributes') }}">thuộc tính</a> </div>
                             </div>
                         </div>
 
@@ -51,49 +51,7 @@
                             </div>
                             <div class="infobox-data">
                                 <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-6"></div>
-
-                        <div class="infobox infobox-blue">
-                            <div class="infobox-icon">
-                                <i class="ace-icon fa fa-cubes"></i>
-                            </div>
-                            <div class="infobox-data">
-                                <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
-                            </div>
-                        </div>
-
-                        <div class="infobox infobox-blue">
-                            <div class="infobox-icon">
-                                <i class="ace-icon fa fa-users"></i>
-                            </div>
-                            <div class="infobox-data">
-                                <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
-                            </div>
-                        </div>
-
-                        <div class="infobox infobox-orange2">
-                            <div class="infobox-icon">
-                                <i class="ace-icon fa fa-cube"></i>
-                            </div>
-                            <div class="infobox-data">
-                                <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
-                            </div>
-                        </div>
-
-                        <div class="infobox infobox-red">
-                            <div class="infobox-icon">
-                                <i class="ace-icon fa fa-cube"></i>
-                            </div>
-                            <div class="infobox-data">
-                                <span class="infobox-data-number"></span>
-                                <div class="infobox-content"></div>
+                                <div class="infobox-content"><a href="{{ url('/quantri/products') }}">sản phẩm</a> </div>
                             </div>
                         </div>
                     </div>
